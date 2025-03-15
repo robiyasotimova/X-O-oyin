@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .doira {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+        }
+
+        .shakl {
+            width: 100px;
+            height: 50vh;
+            margin-left: 300px;
+            background-color: black;
+            z-index: -1;
+        }
+
+        .shakl2 {
+            width: 100px;
+            height: 50vh;
+            margin-left: 300px;
+            background-color: black;
+            z-index: -1;
+            margin-top: 75px;
+        }
+
+        .flex1 {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            position: absolute;
+
+        }
+
+
+        .shakl3 {
+            width: 100px;
+            height: 100vh;
+            margin-left: 600px;
+            background-color: black;
+            z-index: -1;
+            margin-top: -93.5%;
+        }
+
+        .shakl4 {
+            width: 100px;
+            height: 100vh;
+            margin-left: 600px;
+            background-color: black;
+            z-index: -1;
+            margin-top: 75px;
+        }
+
+        .flex2 {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            position: absolute;
+
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="doira"></div>
+
+    <div class="flex1">
+        <div class="shakl"></div>
+        <div class="shakl2"></div>
+    </div>
+
+    <div class="flex2">
+        <div class="shakl3"></div>
+        <div class="shakl4"></div>
+
+
+    </div>
+
+    <script>
+        let marginKamayishi = 0
+        let marginYuqoriga = 0
+        let DoimiyMarginLeft = 300;
+        let yuqoriga = true
+        setInterval(myTimer, 10);
+        function myTimer() {
+            let shakl1 = document.getElementsByClassName('shakl')[0]
+            shakl1.style.marginLeft = DoimiyMarginLeft - marginKamayishi + "px"
+            marginKamayishi += 1
+            if (marginKamayishi == 300) {
+                shakl1.style.marginLeft = "300px"
+                marginKamayishi = 0
+            }
+
+            let shakl2 = document.getElementsByClassName('shakl2')[0]
+            shakl2.style.marginLeft = DoimiyMarginLeft - marginKamayishi + "px"
+            if (marginKamayishi == 300) {
+                shakl2.style.marginLeft = "300px"
+                marginKamayishi = 0
+            }
+
+            let shakl3 = document.getElementsByClassName('flex2')[0]
+            if (yuqoriga) {
+                marginYuqoriga += 1
+                shakl3.style.marginTop = 0 - marginYuqoriga + "px"
+                    console.log("tepa")
+                }
+            
+            if (marginYuqoriga == 600) {
+                yuqoriga = false
+                marginYuqoriga-=1
+                console.log("tegdi")
+            }
+            else if (!yuqoriga) {
+                console.log(marginYuqoriga)
+                marginYuqoriga -= 1
+                shakl3.style.marginTop = 0 - marginYuqoriga + "px"
+
+            }
+            if(marginYuqoriga == -600){
+                yuqoriga=true
+            }
+        }
+            
+
+
+
+        let koptok = document.getElementsByClassName('doira')[0]
+        let X = 0
+        let Y = 0
+        document.onmousemove = function (event) {
+            pressY = 0
+            let x = event.screenX
+            let y = event.screenY
+            X = x
+            Y = y
+            koptok.style.marginLeft = (x - 25) + 'px'
+            koptok.style.marginTop = (y - 25 - 80) + 'px'
+            let body = document.getElementById('body')
+            if (x + marginKamayishi >= 276 && 54 >= ((y - 25) * 100) / 1350 && x + marginKamayishi <= 425) {
+                body.style.backgroundColor = 'red'
+            }
+            else if (x + marginKamayishi >= 276 && 56 <= ((y - 25) * 100) / 1350 && x + marginKamayishi <= 425) {
+                body.style.backgroundColor = 'red'
+            }
+            else if (x>= 576 && 54 >= ((y + marginYuqoriga - 25) * 100) / 1350 && x <= 725) {
+                body.style.backgroundColor = 'red'
+            }
+            else if (x >= 576 && 56 <= ((y + marginYuqoriga - 25) * 100) / 1350 && x <= 725) {
+                body.style.backgroundColor = 'red'
+            }
+            else { body.style.backgroundColor = 'white' }
+
+        }
+        let pressY = 0
+        document.onkeydown = function (event) {
+            if (event.key == "ArrowUp") {
+                pressY += 10
+                koptok.style.marginTop = (Y - pressY - 25 - 122) + 'px'
+            }
+            else if (event.key == "ArrowDown") {
+                pressY -= 10
+                koptok.style.marginTop = (Y - pressY - 25 - 122) + 'px'
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
+</body>
+</html>
+
+
+
+console.log(combinatsiyalar[i])
